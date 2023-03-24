@@ -24,5 +24,5 @@ functions:
       #Invoke Lambda function every day at 10:47PM
       - schedule: cron(17 17 * * ? *)
     ephemeralStorageSize: 512
-    # url:
-    #     authorizer: 'none'   
+    url:
+      authorizer: 'none'   
