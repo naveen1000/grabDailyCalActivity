@@ -21,11 +21,8 @@ functions:
     name: grabDailyCalActivities
     description: Grab Daily Calendar Activity data From RDS DB
     events:
-      # Invoke Lambda function every day at 10:47PM
+      #Invoke Lambda function every day at 10:47PM
       - schedule: cron(17 17 * * ? *)
-    exclude:
-      - node_modules/**
-      - package-lock.json
     ephemeralStorageSize: 512
-    url:
-        authorizer: 'none'   
+    # url:
+    #     authorizer: 'none'   

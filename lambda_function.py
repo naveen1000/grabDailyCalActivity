@@ -148,7 +148,7 @@ def response(myhtml):
     }
   
 def lambda_handler(event, context):
-    #TODOs implement
+    #Logic implement Here
     try: 
         t_date = event.get('queryStringParameters')['date']
     except Exception as e:
