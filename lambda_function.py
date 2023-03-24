@@ -75,7 +75,7 @@ def daily_pie_chart(p_date):
   t_key = 'Daily_Activity.png'
   bucket = boto3.resource('s3').Bucket('mycalactivity')
   bucket.put_object(Body=img_data, ContentType='image/png', Key=t_key)
-  #generate presigned url
+  #generate presigned url 
   url = s3.generate_presigned_url('get_object', 
       Params={'Bucket': 'mycalactivity', 'Key': t_key},
       ExpiresIn=86400)
@@ -148,7 +148,7 @@ def response(myhtml):
     }
   
 def lambda_handler(event, context):
-    # TODO implement
+    #TODOs implement
     try: 
         t_date = event.get('queryStringParameters')['date']
     except Exception as e:
