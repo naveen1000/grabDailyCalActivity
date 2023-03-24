@@ -1,0 +1,31 @@
+service: grabDailyCalActivity
+
+frameworkVersion: '3'
+
+
+provider:
+  name: aws
+  runtime: python3.9
+  memorySize: 128
+  timeout: 30 #Seconds  
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p39-matplotlib:1
+    - arn:aws:lambda:us-east-1:342115176826:layer:telegram_bot_mod:1
+    - arn:aws:lambda:us-east-1:342115176826:layer:mysql-connector-python-mod:1
+  iam:
+    role: arn:aws:iam::342115176826:role/service-role/grabCalActivity-role-bw2y9xbs
+
+functions:
+  grabDailyCalActivity:
+    handler: lambda_function.lambda_handler
+    name: grabDailyCalActivity
+    description: Grab Daily Calendar Activity data From RDS DB
+    ephemeralStorageSize: 512
+    url:
+        authorizer: 'none'   
+    events:
+      # Invoke Lambda function every day at 10:47PM
+      - schedule: cron(17 17 * * ? *)
+    exclude:
+      - node_modules/**
+      - package-lock.json
