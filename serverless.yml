@@ -1,4 +1,4 @@
-service: grabDailyCalActivity
+service: grabDailyCalActivities
 
 frameworkVersion: '3'
 
@@ -16,9 +16,9 @@ provider:
     role: arn:aws:iam::342115176826:role/service-role/grabCalActivity-role-bw2y9xbs
 
 functions:
-  grabDailyCalActivity:
+  grabDailyCalActivities:
     handler: lambda_function.lambda_handler
-    name: grabDailyCalActivity
+    name: grabDailyCalActivities
     description: Grab Daily Calendar Activity data From RDS DB
     ephemeralStorageSize: 512
     url:
