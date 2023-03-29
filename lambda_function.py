@@ -39,7 +39,12 @@ def daily_pie_chart(p_date):
   for x in myresult:    
     print(x[0], ' ' ,x[1], ' ' , timedelta(seconds= int(x[2]) ) )
     labels.append(str(timedelta(seconds= int(x[2]))))
-    colorset.append(str(x[1]))
+
+    if x[0] == '9 Naveen Fitness Calendar': 
+      colorset.append('#b5a605')
+    else:
+      colorset.append(str(x[1]))        
+
     times.append(str(x[2]))
     tt = tt + int(x[2])
     if x[0] == 'Naveen Routine':
@@ -157,4 +162,7 @@ def lambda_handler(event, context):
     robj = daily_pie_chart(t_date)
     return robj
 
-#lambda_handler(1, 1)
+'''e ={
+"queryStringParameters" : {"date" : "2023-03-29"}
+}
+lambda_handler(e,1)'''
