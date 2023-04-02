@@ -25,7 +25,7 @@ def daily_pie_chart(p_date):
   mycursor.execute(sql)
 
   myresult = mycursor.fetchall()
-  print(myresult)
+  #print(myresult)
   labels = []
   times = []
   colorset = []
@@ -86,7 +86,7 @@ def daily_pie_chart(p_date):
       ExpiresIn=86400)
   print(url)
   #bot.send_photo(chat_id='582942300', photo=url)
-  NSC_D = ''
+  '''NSC_D = ''
   NWC_D = ''
   NPW_D = ''
   NDR_D = ''
@@ -137,7 +137,9 @@ def daily_pie_chart(p_date):
     CON = '<b>' + '***Missing work life blance***'  + '</b>'
   
     
-  caption = '<b>' + 'Your Day Activity' + '</b>\n' +  NWC_D + '\n' + NPW_D + '\n' + NSC_D + '\n' + NMU_D + '\n' + NDR_D + '\n' + NR_D + '\n' +  CON          
+  caption = '<b>' + 'Your Day Activity' + '</b>\n' +  NWC_D + '\n' + NPW_D + '\n' + NSC_D + '\n' + NMU_D + '\n' + NDR_D + '\n' + NR_D + '\n' +  CON ''' 
+
+  caption = '<b>' + 'Your Day Activity ' + str(p_date) + '</b>\n'         
   #bot.send_message(chat_id='582942300',text= caption ,parse_mode = 'HTML')
   bot.send_photo(chat_id='582942300', photo= url, caption = caption,parse_mode = 'HTML')
   return response('<html><head><title>Daily Activity</title></head>' + 
@@ -162,7 +164,7 @@ def lambda_handler(event, context):
     robj = daily_pie_chart(t_date)
     return robj
 
-'''e ={
-"queryStringParameters" : {"date" : "2023-03-29"}
+e ={
+"queryStringParameters" : {"date" : "2023-04-01"}
 }
-lambda_handler(e,1)'''
+lambda_handler(e,1)
