@@ -9,9 +9,9 @@ import boto3
 from io import StringIO, BytesIO
 
 mydb = mysql.connector.connect(
-  host="database-1.cyxb0drmxfft.us-east-1.rds.amazonaws.com",
+  host="database-1.cn8x7y1hcdvd.us-east-1.rds.amazonaws.com",
   user="admin",
-  password="admin123",
+  password="Welcome1",
 
   database="CalDB"
 )
@@ -72,8 +72,8 @@ def daily_pie_chart(p_date):
   plt.pie(times, labels = labels,colors = colorset ,autopct='%1.2f%%'
   , shadow= True , wedgeprops= {'edgecolor' : 'white' }
   )  
-  #plt.pie(times, labels = labels,colors = colorset ,autopct='%1.2f%%') 
-  #plt.savefig('activity.png') 
+  plt.pie(times, labels = labels,colors = colorset ,autopct='%1.2f%%') 
+  plt.savefig('activity.png') 
   plt.savefig(img_data, format='png')
   img_data.seek(0)
   # put plot in S3 bucket
@@ -81,11 +81,12 @@ def daily_pie_chart(p_date):
   bucket = boto3.resource('s3').Bucket('mycalactivity')
   bucket.put_object(Body=img_data, ContentType='image/png', Key=t_key)
   #generate presigned url 
+  #url = 'https://pbs.twimg.com/media/Fg86PI_acAAv-K9.jpg'
   url = s3.generate_presigned_url('get_object', 
       Params={'Bucket': 'mycalactivity', 'Key': t_key},
       ExpiresIn=86400)
   print(url)
-  #bot.send_photo(chat_id='582942300', photo=url)
+  bot.send_photo(chat_id='582942300', photo=url)
   '''NSC_D = ''
   NWC_D = ''
   NPW_D = ''
@@ -141,7 +142,7 @@ def daily_pie_chart(p_date):
 
   caption = '<b>' + 'Your Day Activity ' + str(p_date) + '</b>\n'         
   #bot.send_message(chat_id='582942300',text= caption ,parse_mode = 'HTML')
-  bot.send_photo(chat_id='582942300', photo= url, caption = caption,parse_mode = 'HTML')
+  #bot.send_photo(chat_id='582942300', photo=open('activity.png', 'rb'), caption = caption,parse_mode = 'HTML')
   return response('<html><head><title>Daily Activity</title></head>' + 
         '<body><div><img src=' + url + ' alt="Image" width="750" height="600"><div><p>' + caption+ '</p></body></html>')
 
@@ -164,7 +165,7 @@ def lambda_handler(event, context):
     robj = daily_pie_chart(t_date)
     return robj
 
-e ={
-"queryStringParameters" : {"date" : "2023-04-01"}
+'''e ={
+"queryStringParameters" : {"date" : "2023-06-19"}
 }
-lambda_handler(e,1)
+lambda_handler(e,1)'''

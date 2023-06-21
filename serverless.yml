@@ -10,10 +10,10 @@ provider:
   timeout: 30 #Seconds  
   layers:
     - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-p39-matplotlib:1
-    - arn:aws:lambda:us-east-1:342115176826:layer:telegram_bot_mod:1
-    - arn:aws:lambda:us-east-1:342115176826:layer:mysql-connector-python-mod:1
+    - arn:aws:lambda:us-east-1:859064164249:layer:telegram_bot_mod:1
+    - arn:aws:lambda:us-east-1:859064164249:layer:mysql-connector-python-mod:1
   iam:
-    role: arn:aws:iam::342115176826:role/service-role/grabCalActivity-role-bw2y9xbs
+    role: arn:aws:iam::859064164249:role/myCalActivityLoad-dev-us-east-1-lambdaRole
 
 functions:
   grabDailyCalActivities:
