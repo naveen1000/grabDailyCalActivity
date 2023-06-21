@@ -73,8 +73,8 @@ def daily_pie_chart(p_date):
   , shadow= True , wedgeprops= {'edgecolor' : 'white' }
   )  
   plt.pie(times, labels = labels,colors = colorset ,autopct='%1.2f%%') 
-  plt.savefig('activity.png') 
-  plt.savefig(img_data, format='png')
+  #plt.savefig('activity.png') 
+  #plt.savefig(img_data, format='png')
   img_data.seek(0)
   # put plot in S3 bucket
   t_key = 'Daily_Activity.png'
